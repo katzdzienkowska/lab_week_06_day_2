@@ -1,27 +1,28 @@
-const assert = require ("assert");
-const Paint = require("../paint.js");
+const assert = require('assert');
+const PaintCan = require('../paint_can.js');
 
-describe("Paint", function () {
+describe('Paint Can', function () {
 
-    let paint;
+  let paintCan;
 
-    beforeEach (function () {
-        paint = new Paint(5);
-    });
+  beforeEach(function () {
+    paintCan = new PaintCan(10);
+  });
 
-    it("should have a number of litres of paint", function () {
-        const actual = paint.litres;
-        assert.strictEqual(actual, 5);
-    })
+  it('should have a number of litres of paint', function () {
+    const expected = 10;
+    assert.strictEqual(paintCan.litresOfPaint, expected);
+  });
 
-    it("should be able to check if it's empty", function () {
-        const actual = paint.full;
-        assert.strictEqual(actual, true);
-    })
+  it('should not start empty', function () {
+    const expected = false;
+    assert.strictEqual(paintCan.isEmpty(), expected);
+  });
 
-    it("should be able to empty itself of paint", function () {
-        paint.emptyPaint()
-        const actual = paint.full;
-        assert.strictEqual(actual, false);
-    })
-})
+  it('should be able to empty itself', function () {
+    paintCan.empty();
+    const expected = true;
+    assert.strictEqual(paintCan.isEmpty(), expected);
+  });
+
+});
